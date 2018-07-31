@@ -1,0 +1,18 @@
+{
+  "name": "atom-crafts",
+  "main": "./lib/atom-crafts",
+  "version": "0.1.0",
+  "description": "Design craft projects in atom",
+  "keywords": [],
+  "activationCommands": {
+    "atom-workspace": "atom-crafts:toggle"
+  },
+  "repository": "https://github.com/atom/atom-crafts",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "color": "3.0.0"
+  }
+}

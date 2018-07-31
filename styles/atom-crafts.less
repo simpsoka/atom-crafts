@@ -1,0 +1,189 @@
+// The ui-variables file is provided by base themes provided by Atom.
+//
+// See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
+// for a full listing of what's available.
+@import "ui-variables";
+
+@line-number-color: #636d83;
+@line-number-width: 28px;
+@cell-height: 20px;
+@border-color: rgba(0,0,0,0.3);
+@toolbar-height: 30px;
+@toolbar-background-color: #21252b;
+@panel-background-color: #24272e;
+@icon-color: #929bab;
+@padding: 8px;
+@min-width: 270px;
+
+.atom-crafts {
+  position: relative;
+  overflow: auto;
+  background-color: @panel-background-color;
+  min-width: @min-width;
+}
+
+.atom-crafts-alert.active {
+  position: fixed;
+  bottom: @cell-height * 3;
+  right: @cell-height;
+  padding: @padding;
+  border: 2px solid @icon-color;
+  min-width: @min-width - 40px;
+}
+
+.atom-crafts-canvas {
+  position: relative;
+  margin-left: @line-number-width + @padding;
+  margin-top: @cell-height + @toolbar-height + @padding;
+  margin-right: @line-number-width + @padding;
+  padding-right: 1px; // hack
+  cursor: pointer;
+}
+
+.atom-crafts-toolbar {
+  height: @toolbar-height;
+  width: 100%;
+  border-bottom: 1px solid @border-color;
+  background-color: @toolbar-background-color;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.atom-crafts-canvas:after {
+  content: ' ';
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICA8ZGVmcz4NCiAgICA8cGF0dGVybiBpZD0ic21hbGxHcmlkIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPg0KICAgICAgPHBhdGggZD0iTSAyMCAwIEwgMCAwIDAgMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLCAwLCAwLCAwLjUpIiBzdHJva2Utd2lkdGg9IjAuNSIvPg0KICAgIDwvcGF0dGVybj4NCiAgICA8cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPg0KICAgICAgPHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjc21hbGxHcmlkKSIvPg0KICAgICAgPHBhdGggZD0iTSAyMDAgMCBMIDAgMCAwIDIwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDAsIDAsIDAsIDAuNSkiIHN0cm9rZS13aWR0aD0iMSIvPg0KICAgIDwvcGF0dGVybj4NCiAgPC9kZWZzPg0KDQogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiIC8+DQo8L3N2Zz4=");
+}
+
+.atom-crafts-labels-cols {
+  z-index: 1000;
+  width: 100%;
+  top: @toolbar-height + @padding;
+  padding-left: @line-number-width + @padding;
+  display: flex;
+  position: fixed;
+  background-color: @panel-background-color;
+
+  .line-number {
+    width: @cell-height;
+    padding-left: 0;
+    justify-content: center;
+  }
+}
+
+.atom-crafts-labels-rows {
+  width: @line-number-width;
+  top: @toolbar-height + @cell-height + @padding;
+  position: absolute;
+  left: 0;
+
+  .line-number {
+    display: block;
+    text-align: right;
+    align-items: center;
+  }
+}
+
+.atom-crafts-palette-picker, .atom-crafts-padding-picker {
+  cursor: pointer;
+  display: block;
+  width: @cell-height;
+  height: @cell-height;
+  border: 2px solid @icon-color;
+  border-radius: 3px;
+  padding: 2px;
+  overflow: hidden;
+  margin-left: @padding;
+
+  &.open {
+    display: flex;
+    width: auto;
+    height: auto;
+
+    span {
+      display: none;
+    }
+  }
+
+  span {
+    pointer-events: none;
+  }
+
+  &.open .palette-color, &.open .padding-option {
+    display: block
+  }
+
+  &:hover {
+    border-color: white;
+  }
+
+  &:hover {
+    color: white;
+  }
+}
+
+.atom-crafts-padding-picker {
+  width: auto;
+  display: flex;
+  align-items: center;
+  padding: 2px 6px;
+}
+
+.palette-color, .padding-option {
+  cursor: pointer;
+  display: none;
+  width: @cell-height - 12px;
+  height: @cell-height - 12px;
+  margin: 2px;
+  &.selected {
+    pointer-events: none;
+    display: block;
+  }
+}
+
+.padding-option {
+  border-color: @icon-color;
+  border-style: solid;
+  border-width: 0;
+  background: rgba(255, 255, 255, 0.1);
+  &.left {
+    border-left-width: 2px;
+  }
+  &.right {
+    border-right-width: 2px;
+  }
+  &.top {
+    border-top-width: 2px;
+  }
+  &.bottom {
+    border-bottom-width: 2px;
+  }
+  &:hover {
+    border-color: white;
+  }
+}
+
+
+.line-number {
+  color: @line-number-color;
+  display: flex;
+  font-size: 14px;
+  padding-left: .5em;
+  white-space: nowrap;
+  opacity: 0.6;
+  height: @cell-height;
+  -webkit-font-smoothing: antialiased;
+
+  &.active {
+    color: white;
+  }
+}
