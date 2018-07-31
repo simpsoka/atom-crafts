@@ -7,7 +7,7 @@
   "activationCommands": {
     "atom-workspace": "atom-crafts:toggle"
   },
-  "repository": "https://github.com/atom/atom-crafts",
+  "repository": "https://github.com/kelly/atom-crafts",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
